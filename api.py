@@ -45,6 +45,16 @@ async def update_article(id: int, article_update: ArticleUpdateModel) \
     Update an Article\n
     :param id: The id of the Article to be updated\n
     :param article_update: The body with Article information to be updated\n
-    :return: The Article updated
+    :return: The Article updated if it exists
     """
     return article_data.update(id, article_update)
+
+
+@article_router.delete('/{id}')
+async def remove_article(id: int) -> Union[ArticleModel, HTTPException]:
+    """
+    Delete an Article\n
+    :param id: The id of the Article to be deleted\n
+    :return: The Article removed if it exists
+    """
+    return article_data.delete(id)
