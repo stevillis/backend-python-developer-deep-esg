@@ -28,9 +28,31 @@ class ArticleData:
                     provider=""
                 )
             ]
+        ),
+        ArticleModel(
+            id=2,
+            featured=False,
+            title="First Lauch mars",
+            url="http://localhost:8000/article/2",
+            image_url="http://localhost:8000/mars.png",
+            news_site="",
+            summary="",
+            published_at="2021-08-28",
+            launches=[
+                LaunchModel(
+                    id=2,
+                    provider="SpaceX Falcon 9"
+                )
+            ],
+            events=[
+                EventModel(
+                    id=2,
+                    provider="SpaceX Mars Mission"
+                )
+            ]
         )
     ]
-    current_id = 1
+    current_id = 2
 
     def __get_article_by_id(self, article_id: int) \
             -> Union[ArticleModel, HTTPException]:
