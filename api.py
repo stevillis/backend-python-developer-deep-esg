@@ -21,6 +21,16 @@ async def get_article(id: int) -> ArticleModel:
     """
     Get Article by id\n
     :param id: The id of the Article to be retrieved
-    :return: The Animal retrieved by id if it exists
+    :return: The Animal retriaeved by id if it exists
     """
     return article_data.get_article(id)
+
+
+@article_router.post('/')
+async def create_article(article: ArticleModel) -> ArticleModel:
+    """
+    Create Article\n
+    :param article: The body with Article information to be created\n
+    :return: The Article created
+    """
+    return article_data.insert(article)
