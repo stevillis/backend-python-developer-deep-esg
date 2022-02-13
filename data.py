@@ -5,7 +5,7 @@ from fastapi import HTTPException
 from models import ArticleModel, ArticleUpdateModel, EventModel, LaunchModel
 
 
-class Articles:
+class ArticleData:
     articles: List[ArticleModel] = [
         ArticleModel(
             id=1,
