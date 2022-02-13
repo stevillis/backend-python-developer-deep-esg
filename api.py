@@ -1,7 +1,9 @@
-from fastapi import APIRouter
+from typing import Union
+
+from fastapi import APIRouter, HTTPException
 
 from data import ArticleData
-from models import ArticleModel
+from models import ArticleModel, ArticleUpdateModel
 
 article_data = ArticleData()
 article_router = APIRouter()
@@ -34,3 +36,15 @@ async def create_article(article: ArticleModel) -> ArticleModel:
     :return: The Article created
     """
     return article_data.insert(article)
+
+
+@article_router.put('/{id}')
+async def update_article(id: int, article_update: ArticleUpdateModel) \
+        -> Union[ArticleModel, HTTPException]:
+    """
+    Update an Article\n
+    :param id: The id of the Article to be updated\n
+    :param article_update: The body with Article information to be updated\n
+    :return: The Article updated
+    """
+    return article_data.update(id, article_update)
